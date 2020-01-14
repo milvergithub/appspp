@@ -1,9 +1,7 @@
 package com.transoft.appspp.mvp.pickup;
 
 import com.transoft.appspp.model.Pickup;
-
 import java.util.List;
-
 import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.disposables.Disposable;
 import io.reactivex.observers.DisposableObserver;
@@ -27,7 +25,7 @@ public class PickupActivityPresenter implements PickupActivityMvp.Presenter {
     @Override
     public void loadData() {
         view.showProgress();
-        model.findAllPickups()
+        subscription = model.findAllPickups()
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeWith(new DisposableObserver<List<Pickup>>() {
@@ -40,10 +38,12 @@ public class PickupActivityPresenter implements PickupActivityMvp.Presenter {
                     public void onError(Throwable e) {
                         e.printStackTrace();
                         view.showSnackBar("Error al obtener datos");
+                        view.hideProgress();
                     }
 
                     @Override
                     public void onComplete() {
+                        view.hideProgress();
                     }
                 });
     }
