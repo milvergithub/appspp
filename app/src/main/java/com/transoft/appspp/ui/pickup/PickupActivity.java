@@ -4,10 +4,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.ProgressBar;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.transoft.appspp.R;
@@ -15,9 +18,7 @@ import com.transoft.appspp.adapter.PickupAdapter;
 import com.transoft.appspp.di.SppApplication;
 import com.transoft.appspp.model.Pickup;
 import com.transoft.appspp.mvp.pickup.PickupActivityMvp;
-
 import java.util.List;
-
 import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -29,6 +30,9 @@ public class PickupActivity extends AppCompatActivity implements PickupActivityM
 
     @BindView(R.id.add_pick_up)
     public FloatingActionButton actionButton;
+
+    @BindView(R.id.progressBar)
+    public ProgressBar progressBar;
 
     @Inject
     public PickupAdapter pickupAdapter;
@@ -70,13 +74,13 @@ public class PickupActivity extends AppCompatActivity implements PickupActivityM
 
     @Override
     public void onClickListener(Pickup pickup) {
-        Snackbar.make(recyclerView, pickup.getName(), Snackbar.LENGTH_LONG).show();
+        this.showSnackBar(pickup.getName());
     }
 
 
     @Override
     public void showSnackBar(String message) {
-
+        Snackbar.make(recyclerView, message, Snackbar.LENGTH_LONG).setActionTextColor(Color.WHITE).show();
     }
 
     @Override
@@ -96,11 +100,11 @@ public class PickupActivity extends AppCompatActivity implements PickupActivityM
 
     @Override
     public void showProgress() {
-
+        progressBar.setVisibility(View.VISIBLE);
     }
 
     @Override
     public void hideProgress() {
-
+        progressBar.setVisibility(View.GONE);
     }
 }
