@@ -4,22 +4,21 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.os.Build;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
-import android.widget.Toast;
-
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import com.google.android.material.snackbar.Snackbar;
 import com.transoft.appspp.R;
 import com.transoft.appspp.adapter.PickupAdapter;
 import com.transoft.appspp.di.SppApplication;
 import com.transoft.appspp.model.Pickup;
 import com.transoft.appspp.mvp.pickup.PickupActivityMvp;
 
-import javax.inject.Inject;
+import java.util.List;
 
+import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -45,6 +44,13 @@ public class PickupActivity extends AppCompatActivity implements PickupActivityM
         setupWidgets();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        presenter.setView(this);
+        presenter.loadData();
+    }
+
     private void initialize() {
         ButterKnife.bind(this);
         ((SppApplication) getApplication()).getComponent().inject(this);
@@ -64,11 +70,37 @@ public class PickupActivity extends AppCompatActivity implements PickupActivityM
 
     @Override
     public void onClickListener(Pickup pickup) {
-        showSnackBar(pickup.getName());
+        Snackbar.make(recyclerView, pickup.getName(), Snackbar.LENGTH_LONG).show();
     }
+
 
     @Override
     public void showSnackBar(String message) {
-        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
+
+    }
+
+    @Override
+    public void showData(List<Pickup> pickups) {
+        pickupAdapter.setData(pickups);
+    }
+
+    @Override
+    public void showError(String message) {
+
+    }
+
+    @Override
+    public void showComplete() {
+
+    }
+
+    @Override
+    public void showProgress() {
+
+    }
+
+    @Override
+    public void hideProgress() {
+
     }
 }

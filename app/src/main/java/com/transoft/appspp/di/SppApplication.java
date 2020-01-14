@@ -7,11 +7,11 @@ import com.transoft.appspp.di.module.ApplicationModule;
 import com.transoft.appspp.di.component.ApplicationComponent;
 import com.transoft.appspp.di.component.DaggerApplicationComponent;
 import com.transoft.appspp.di.module.MvpModule;
+import com.transoft.appspp.di.module.RetrofitModule;
 
 public class SppApplication extends Application {
 
     private ApplicationComponent component;
-
 
     @Override
     public void onCreate() {
@@ -20,6 +20,7 @@ public class SppApplication extends Application {
                 .applicationModule(new ApplicationModule(this))
                 .mvpModule(new MvpModule())
                 .adapterModule(new AdapterModule())
+                .retrofitModule(new RetrofitModule())
                 .build();
     }
 

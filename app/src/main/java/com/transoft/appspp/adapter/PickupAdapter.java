@@ -22,14 +22,6 @@ public class PickupAdapter extends RecyclerView.Adapter<PickupAdapter.ViewHolder
     @Inject
     public PickupAdapter() {
         this.data = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            Pickup pickUp = new Pickup();
-            pickUp.setAmount("10.5");
-            pickUp.setName("Demo " + i);
-            pickUp.setAddress("Quillacollo");
-            pickUp.setPhone("75698745");
-            data.add(pickUp);
-        }
     }
 
     @NonNull
@@ -76,7 +68,7 @@ public class PickupAdapter extends RecyclerView.Adapter<PickupAdapter.ViewHolder
         ViewHolder(@NonNull View itemView) {
             super(itemView);
             view = itemView;
-            ButterKnife.bind(view);
+            ButterKnife.bind(this, itemView);
         }
     }
 
