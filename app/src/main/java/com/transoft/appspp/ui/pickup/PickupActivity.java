@@ -9,6 +9,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.transoft.appspp.R;
@@ -63,11 +64,11 @@ public class PickupActivity extends AppCompatActivity implements PickupActivityM
 
     @Override
     public void onClickListener(Pickup pickup) {
-        System.out.println(pickup.getName());
+        showSnackBar(pickup.getName());
     }
 
     @Override
     public void showSnackBar(String message) {
-
+        Toast.makeText(getApplicationContext(), message, Toast.LENGTH_LONG).show();
     }
 }

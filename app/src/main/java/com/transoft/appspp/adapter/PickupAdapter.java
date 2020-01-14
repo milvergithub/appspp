@@ -6,15 +6,11 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.transoft.appspp.R;
 import com.transoft.appspp.model.Pickup;
-
 import java.util.ArrayList;
 import java.util.List;
-
 import javax.inject.Inject;
-
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
