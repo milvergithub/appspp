@@ -23,7 +23,7 @@ import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class PickupActivity extends AppCompatActivity implements PickupActivityMvp.View, PickupAdapter.ClickListener {
+public class PickupActivity extends AppCompatActivity implements PickupActivityMvp.View,PickupAdapter.ClickListener, PickupFormFragment.OnPickupFormListener {
 
     @BindView(R.id.recycler_view)
     public RecyclerView recyclerView;
@@ -39,6 +39,8 @@ public class PickupActivity extends AppCompatActivity implements PickupActivityM
 
     @Inject
     PickupActivityMvp.Presenter presenter;
+
+    PickupFormFragment formFragment = new PickupFormFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -70,7 +72,6 @@ public class PickupActivity extends AppCompatActivity implements PickupActivityM
         actionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                PickupFormFragment formFragment = new PickupFormFragment();
                 formFragment.show(getSupportFragmentManager(), formFragment.getTag());
             }
         });
@@ -101,11 +102,6 @@ public class PickupActivity extends AppCompatActivity implements PickupActivityM
     }
 
     @Override
-    public void showComplete() {
-
-    }
-
-    @Override
     public void showProgress() {
         progressBar.setVisibility(View.VISIBLE);
     }
@@ -113,5 +109,16 @@ public class PickupActivity extends AppCompatActivity implements PickupActivityM
     @Override
     public void hideProgress() {
         progressBar.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void savePickUpForm(Pickup pickup) {
+        formFragment.dismiss();
+        presenter.save(pickup);
+    }
+
+    @Override
+    public void cancelForm() {
+        formFragment.dismiss();
     }
 }

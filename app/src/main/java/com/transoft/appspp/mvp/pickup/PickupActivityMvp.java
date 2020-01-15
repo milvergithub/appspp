@@ -20,7 +20,6 @@ public interface PickupActivityMvp {
 
         void showError(String message);
 
-        void showComplete();
 
         void showProgress();
 
@@ -30,6 +29,7 @@ public interface PickupActivityMvp {
     interface Presenter {
        void setView(PickupActivityMvp.View view);
        void loadData();
+       void save(Pickup pickup);
        void unsubscribe();
     }
 }

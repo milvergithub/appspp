@@ -4,7 +4,6 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.Toast;
@@ -16,6 +15,7 @@ import com.transoft.appspp.util.AndroidUtil;
 import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 
 public class MenuActivity extends Activity implements MenuActivityMvp.View {
@@ -45,18 +45,11 @@ public class MenuActivity extends Activity implements MenuActivityMvp.View {
     private void setupWidgets() {
         Window window = getWindow();
         AndroidUtil.statusBarColorTransparentWithKeyboard(this, window);
-        btnScanner.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+    }
 
-            }
-        });
-        btnSpp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), SppMenuActivity.class));
-            }
-        });
+    @OnClick(R.id.btn_spp)
+    public void onOpenSpp() {
+        startActivity(new Intent(getApplicationContext(), SppMenuActivity.class));
     }
 
     @Override

@@ -49,6 +49,11 @@ public class PickupActivityPresenter implements PickupActivityMvp.Presenter {
     }
 
     @Override
+    public void save(Pickup pickup) {
+        loadData();
+    }
+
+    @Override
     public void unsubscribe() {
         if (this.subscription != null && this.subscription.isDisposed()) {
             subscription.dispose();
