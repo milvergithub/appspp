@@ -112,13 +112,13 @@ public class PickupActivity extends AppCompatActivity implements PickupActivityM
     }
 
     @Override
-    public void savePickUpForm(Pickup pickup) {
+    public void savePickupForm(Pickup pickup) {
         formFragment.dismiss();
         presenter.save(pickup);
     }
 
     @Override
-    public void cancelForm() {
+    public void cancelPickupForm() {
         formFragment.dismiss();
     }
 }

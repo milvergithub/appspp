@@ -5,7 +5,6 @@ import androidx.cardview.widget.CardView;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.view.Window;
 
 import com.transoft.appspp.R;
@@ -15,6 +14,7 @@ import com.transoft.appspp.util.AndroidUtil;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class SppMenuActivity extends Activity {
 
@@ -37,20 +37,13 @@ public class SppMenuActivity extends Activity {
         ((SppApplication) getApplication()).getComponent().inject(this);
     }
 
+    @OnClick(R.id.card_pickup)
+    public void onPickupActivity() {
+        startActivity(new Intent(getApplicationContext(), PickupActivity.class));
+    }
+
     private void setupWidgets() {
         Window window = getWindow();
         AndroidUtil.statusBarColorTransparentWithKeyboard(this, window);
-        cardPickUp.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                startActivity(new Intent(getApplicationContext(), PickupActivity.class));
-            }
-        });
-        cardDelivery.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                System.out.println("CLICK DELIVERY...");
-            }
-        });
     }
 }

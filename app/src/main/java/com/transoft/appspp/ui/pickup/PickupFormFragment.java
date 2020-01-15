@@ -40,12 +40,12 @@ public class PickupFormFragment extends BottomSheetDialogFragment {
 
     @OnClick(R.id.btn_pu_save)
     public void onSaveButton() {
-        listener.savePickUpForm(null);
+        listener.savePickupForm(null);
     }
 
     @OnClick(R.id.btn_pu_cancel)
     public void onCancelButton() {
-        listener.cancelPickUpForm();
+        listener.cancelPickupForm();
     }
 
     @Override
@@ -65,7 +65,7 @@ public class PickupFormFragment extends BottomSheetDialogFragment {
     }
 
     public interface OnPickupFormListener {
-        void savePickUpForm(Pickup pickup);
-        void cancelPickUpForm();
+        void savePickupForm(Pickup pickup);
+        void cancelPickupForm();
     }
 }
