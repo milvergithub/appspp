@@ -67,6 +67,13 @@ public class PickupActivity extends AppCompatActivity implements PickupActivityM
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(ContextCompat.getColor(this, R.color.colorAccentDark));
         }
+        actionButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                PickupFormFragment formFragment = new PickupFormFragment();
+                formFragment.show(getSupportFragmentManager(), formFragment.getTag());
+            }
+        });
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         pickupAdapter.setClickListener(this);
         recyclerView.setAdapter(pickupAdapter);
