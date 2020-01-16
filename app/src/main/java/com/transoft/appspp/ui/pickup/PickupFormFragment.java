@@ -2,8 +2,13 @@ package com.transoft.appspp.ui.pickup;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.fragment.app.DialogFragment;
+
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.bottomsheet.BottomSheetDialog;
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment;
@@ -26,6 +31,12 @@ public class PickupFormFragment extends BottomSheetDialogFragment {
     @BindView(R.id.btn_pu_cancel)
     public Button cancelButton;
 
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        //setStyle(DialogFragment.STYLE_NO_FRAME, 0);
+    }
+
     @NonNull
     @Override
     public Dialog onCreateDialog(Bundle savedInstanceState) {
@@ -35,6 +46,7 @@ public class PickupFormFragment extends BottomSheetDialogFragment {
         sheetBehavior = BottomSheetBehavior.from((View)view.getParent());
         sheetBehavior.setPeekHeight(200);
         ButterKnife.bind(this, view);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         return dialog;
     }
 
