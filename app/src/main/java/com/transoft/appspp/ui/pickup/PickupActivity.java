@@ -11,6 +11,8 @@ import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.ProgressBar;
+
+import com.google.android.material.bottomsheet.BottomSheetBehavior;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 import com.transoft.appspp.R;
@@ -42,6 +44,11 @@ public class PickupActivity extends AppCompatActivity implements PickupActivityM
 
     PickupFormFragment formFragment = new PickupFormFragment();
 
+    private BottomSheetBehavior sheetBehavior;
+
+    @BindView(R.id.form_pickup)
+    View formPickup;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -60,6 +67,8 @@ public class PickupActivity extends AppCompatActivity implements PickupActivityM
     private void initialize() {
         ButterKnife.bind(this);
         ((SppApplication) getApplication()).getComponent().inject(this);
+        sheetBehavior = BottomSheetBehavior.from(formPickup);
+        sheetBehavior.setPeekHeight(0);
     }
 
     private void setupWidgets() {
@@ -72,7 +81,7 @@ public class PickupActivity extends AppCompatActivity implements PickupActivityM
         actionButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                formFragment.show(getSupportFragmentManager(), formFragment.getTag());
+                sheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
             }
         });
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
