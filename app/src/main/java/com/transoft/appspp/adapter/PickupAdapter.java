@@ -1,6 +1,7 @@
 package com.transoft.appspp.adapter;
 
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
@@ -77,6 +78,7 @@ public class PickupAdapter extends RecyclerView.Adapter<PickupAdapter.ViewHolder
     }
 
     public void setData(List<Pickup> data) {
+        this.data.clear();
         this.data.addAll(data);
         notifyDataSetChanged();
     }

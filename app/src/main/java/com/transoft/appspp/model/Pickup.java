@@ -9,13 +9,19 @@ import lombok.Setter;
 @Setter
 public class Pickup implements Serializable {
 
-    private Integer id;
+    private Long id;
 
     private String name;
 
     private String address;
 
-    private String phone;
+    private String latitude;
+
+    private String longitude;
 
     private String amount;
+
+    private String ci;
+
+    private String phone;
 }

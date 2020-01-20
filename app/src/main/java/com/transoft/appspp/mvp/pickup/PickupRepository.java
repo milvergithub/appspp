@@ -9,4 +9,6 @@ import io.reactivex.Observable;
 public interface PickupRepository {
 
     Observable<List<Pickup>> findAll();
+
+    Observable<Pickup> save(Pickup pickup);
 }

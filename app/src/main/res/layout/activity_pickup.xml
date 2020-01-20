@@ -89,206 +89,29 @@
         app:behavior_hideable="true"
         app:behavior_peekHeight="0dp"
         app:layout_behavior="@string/bottom_sheet_behavior">
+        <include layout="@layout/pickup_form"/>
+    </androidx.core.widget.NestedScrollView>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/detail_pickup"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bottom_sheet_rounded"
+        android:clipToPadding="true"
+        android:layout_marginTop="@dimen/s10dp"
+        android:layout_marginLeft="@dimen/s10dp"
+        android:layout_marginRight="@dimen/s10dp"
+        android:elevation="@dimen/s10dp"
+        android:translationZ="2dp"
+        app:behavior_hideable="true"
+        app:behavior_peekHeight="0dp"
+        app:layout_behavior="@string/bottom_sheet_behavior">
         <RelativeLayout
             android:layout_width="match_parent"
             android:background="@drawable/card_rounded_white"
             android:layout_marginTop="10dp"
             android:layout_height="match_parent">
-            <LinearLayout
-                android:id="@+id/ci_section"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="30dp"
-                android:layout_marginLeft="30dp">
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <TextView
-                        android:id="@+id/text_reception"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content" />
-                    <EditText
-                        android:id="@+id/rpc_ci"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:layout_below="@id/text_reception"
-                        android:paddingStart="15dp"
-                        android:paddingEnd="15dp"
-                        android:hint="CI :"
-                        android:background="@drawable/etext_rounded"/>
-                </RelativeLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/name_section"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="30dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="@dimen/section_margin_top"
-                android:layout_below="@id/ci_section">
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <EditText
-                        android:id="@+id/rpc_name"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:paddingStart="15dp"
-                        android:paddingEnd="15dp"
-                        android:hint="Name"
-                        android:background="@drawable/etext_rounded"/>
-                </RelativeLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/nit_section"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="30dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="@dimen/section_margin_top"
-                android:layout_below="@id/name_section">
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <EditText
-                        android:id="@+id/rpc_nit"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:paddingStart="15dp"
-                        android:paddingEnd="15dp"
-                        android:hint="NIT"
-                        android:background="@drawable/etext_rounded"/>
-                </RelativeLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/phone_section"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="30dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="@dimen/section_margin_top"
-                android:layout_below="@id/nit_section">
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <EditText
-                        android:id="@+id/rpc_phone"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:paddingStart="15dp"
-                        android:paddingEnd="15dp"
-                        android:hint="PHONE"
-                        android:background="@drawable/etext_rounded"/>
-                </RelativeLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/pick_up_time_section"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="30dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="@dimen/section_margin_top"
-                android:layout_below="@id/phone_section">
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <EditText
-                        android:id="@+id/rpc_pick_up_time"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:paddingStart="15dp"
-                        android:paddingEnd="15dp"
-                        android:hint="TIME"
-                        android:background="@drawable/etext_rounded"/>
-                </RelativeLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/address_section"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="30dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="@dimen/section_margin_top"
-                android:layout_below="@id/pick_up_time_section">
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <EditText
-                        android:id="@+id/rpc_address"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:paddingStart="15dp"
-                        android:paddingEnd="15dp"
-                        android:hint="ADDRESS"
-                        android:background="@drawable/etext_rounded"/>
-                </RelativeLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/amount_section"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="30dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="@dimen/section_margin_top"
-                android:layout_below="@id/address_section">
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical">
-                    <EditText
-                        android:id="@+id/rpc_amount"
-                        android:layout_centerHorizontal="true"
-                        android:layout_centerVertical="true"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:paddingStart="15dp"
-                        android:paddingEnd="15dp"
-                        android:hint="AMOUNT"
-                        android:background="@drawable/etext_rounded"/>
-                </RelativeLayout>
-            </LinearLayout>
-            <LinearLayout
-                android:id="@+id/actions_section"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="30dp"
-                android:layout_marginLeft="30dp"
-                android:layout_marginTop="@dimen/section_margin_top"
-                android:layout_below="@id/amount_section">
-                <Button
-                    android:id="@+id/btn_pu_save"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:layout_marginBottom="@dimen/_10sdp"
-                    android:text="SAVE" />
-                <Button
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    android:layout_weight="1"/>
-                <Button
-                    android:id="@+id/btn_pu_cancel"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="CANCEL" />
-            </LinearLayout>
+            <include layout="@layout/pickup_detail"/>
         </RelativeLayout>
     </androidx.core.widget.NestedScrollView>
     <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -302,6 +125,5 @@
             android:layout_gravity="bottom|right"
             android:layout_margin="16dp"
             android:src="@drawable/ic_add"/>
-
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

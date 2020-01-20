@@ -13,7 +13,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 @Module
 public class RetrofitModule {
 
-    private static String URL_RESOURCE = "http://192.168.0.118:3000/";
+    private static String URL_RESOURCE = "http://192.168.0.118:9001/v1/";
 
     @Provides
     Retrofit getRetrofit(OkHttpClient okHttpClient) {

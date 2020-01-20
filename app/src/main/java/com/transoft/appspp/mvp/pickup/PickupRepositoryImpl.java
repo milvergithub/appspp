@@ -19,4 +19,9 @@ public class PickupRepositoryImpl implements PickupRepository {
     public Observable<List<Pickup>> findAll() {
         return apiService.finAllPickup();
     }
+
+    @Override
+    public Observable<Pickup> save(Pickup pickup) {
+        return apiService.savePickup(pickup);
+    }
 }

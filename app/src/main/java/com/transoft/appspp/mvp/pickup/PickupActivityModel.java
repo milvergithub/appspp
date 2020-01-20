@@ -18,4 +18,9 @@ public class PickupActivityModel implements PickupActivityMvp.Model {
     public Observable<List<Pickup>> findAllPickups() {
         return repository.findAll();
     }
+
+    @Override
+    public Observable<Pickup> save(Pickup pickup) {
+        return repository.save(pickup);
+    }
 }

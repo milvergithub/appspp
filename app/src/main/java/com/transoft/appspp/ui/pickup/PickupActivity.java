@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.Window;
 import android.view.WindowManager;
+import android.widget.EditText;
 import android.widget.ProgressBar;
 
 import com.google.android.material.bottomsheet.BottomSheetBehavior;
@@ -24,8 +25,9 @@ import java.util.List;
 import javax.inject.Inject;
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
-public class PickupActivity extends AppCompatActivity implements PickupActivityMvp.View,PickupAdapter.ClickListener, PickupFormFragment.OnPickupFormListener {
+public class PickupActivity extends AppCompatActivity implements PickupActivityMvp.View, PickupAdapter.ClickListener {
 
     @BindView(R.id.recycler_view)
     public RecyclerView recyclerView;
@@ -42,12 +44,32 @@ public class PickupActivity extends AppCompatActivity implements PickupActivityM
     @Inject
     PickupActivityMvp.Presenter presenter;
 
-    PickupFormFragment formFragment = new PickupFormFragment();
-
     private BottomSheetBehavior sheetBehavior;
+    private BottomSheetBehavior detailSheetBehavior;
 
     @BindView(R.id.form_pickup)
     View formPickup;
+
+    @BindView(R.id.detail_pickup)
+    View detailPickup;
+
+    @BindView(R.id.rpc_ci)
+    public EditText ci;
+
+    @BindView(R.id.rpc_name)
+    public EditText name;
+
+    @BindView(R.id.rpc_nit)
+    public EditText nit;
+
+    @BindView(R.id.rpc_phone)
+    public EditText phone;
+
+    @BindView(R.id.rpc_address)
+    public EditText address;
+
+    @BindView(R.id.rpc_amount)
+    public EditText amount;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,6 +91,8 @@ public class PickupActivity extends AppCompatActivity implements PickupActivityM
         ((SppApplication) getApplication()).getComponent().inject(this);
         sheetBehavior = BottomSheetBehavior.from(formPickup);
         sheetBehavior.setPeekHeight(0);
+        detailSheetBehavior = BottomSheetBehavior.from(detailPickup);
+        detailSheetBehavior.setPeekHeight(0);
     }
 
     private void setupWidgets() {
@@ -78,20 +102,19 @@ public class PickupActivity extends AppCompatActivity implements PickupActivityM
             window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
             window.setStatusBarColor(ContextCompat.getColor(this, R.color.colorAccentDark));
         }
-        actionButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                sheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
-            }
-        });
         recyclerView.setLayoutManager(new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false));
         pickupAdapter.setClickListener(this);
         recyclerView.setAdapter(pickupAdapter);
     }
 
+    @OnClick(R.id.add_pick_up)
+    public void onAddPickup() {
+        sheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+    }
+
     @Override
     public void onClickListener(Pickup pickup) {
-        this.showSnackBar(pickup.getName());
+        detailSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
     }
 
 
@@ -106,11 +129,6 @@ public class PickupActivity extends AppCompatActivity implements PickupActivityM
     }
 
     @Override
-    public void showError(String message) {
-
-    }
-
-    @Override
     public void showProgress() {
         progressBar.setVisibility(View.VISIBLE);
     }
@@ -121,13 +139,65 @@ public class PickupActivity extends AppCompatActivity implements PickupActivityM
     }
 
     @Override
-    public void savePickupForm(Pickup pickup) {
-        formFragment.dismiss();
-        presenter.save(pickup);
+    public void setName(String name) {
+        this.name.setText(name);
     }
 
     @Override
-    public void cancelPickupForm() {
-        formFragment.dismiss();
+    public void setAddress(String address) {
+        this.address.setText(address);
+    }
+
+    @Override
+    public void setAmount(String amount) {
+        this.amount.setText(amount);
+    }
+
+    @Override
+    public void setCi(String ci) {
+        this.ci.setText(ci);
+    }
+
+    @Override
+    public void setPhone(String phone) {
+        this.phone.setText(phone);
+    }
+
+    @Override
+    public String getName() {
+        return this.name.getText().toString();
+    }
+
+    @Override
+    public String getAddress() {
+        return this.address.getText().toString();
+    }
+
+    @Override
+    public String getAmount() {
+        return this.amount.getText().toString();
+    }
+
+    @Override
+    public String getCi() {
+        return this.ci.getText().toString();
+    }
+
+    @Override
+    public String getPhone() {
+        return this.phone.getText().toString();
+    }
+
+    @Override
+    @OnClick(R.id.btn_pu_save)
+    public void onSave() {
+        sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+        presenter.save();
+    }
+
+    @Override
+    @OnClick(R.id.btn_pu_cancel)
+    public void onCancel() {
+        sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
     }
 }
