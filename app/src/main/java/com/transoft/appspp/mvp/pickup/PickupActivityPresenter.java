@@ -27,6 +27,11 @@ public class PickupActivityPresenter implements PickupActivityMvp.Presenter {
     }
 
     @Override
+    public void setPickupDetail(Pickup pickup) {
+
+    }
+
+    @Override
     public void loadData() {
         view.showProgress();
         subscription = model.findAllPickups()

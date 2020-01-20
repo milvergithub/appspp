@@ -35,6 +35,7 @@ public interface PickupActivityMvp {
 
     interface Presenter {
        void setView(PickupActivityMvp.View view);
+       void setPickupDetail(Pickup pickup);
        void loadData();
        void save();
        void unsubscribe();

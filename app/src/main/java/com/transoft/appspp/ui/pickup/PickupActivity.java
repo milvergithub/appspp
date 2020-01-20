@@ -115,6 +115,7 @@ public class PickupActivity extends AppCompatActivity implements PickupActivityM
     @Override
     public void onClickListener(Pickup pickup) {
         detailSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
+        presenter.setPickupDetail(pickup);
     }
 
 
