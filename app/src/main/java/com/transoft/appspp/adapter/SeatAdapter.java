@@ -22,13 +22,6 @@ public class SeatAdapter extends RecyclerView.Adapter<SeatAdapter.SeatHolder> {
 
     public SeatAdapter() {
         this.data = new ArrayList<>();
-        Seat seat = new Seat();
-        for (int i = 0; i < 40; i++) {
-            seat.setId(i);
-            seat.setNumber("01");
-            seat.setStatus("FREE");
-            this.data.add(seat);
-        }
     }
 
     @NonNull

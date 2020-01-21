@@ -113,6 +113,19 @@ public class PickupActivity extends AppCompatActivity implements PickupActivityM
     }
 
     @Override
+    @OnClick(R.id.btn_pu_save)
+    public void onSave() {
+        sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+        presenter.save();
+    }
+
+    @Override
+    @OnClick(R.id.btn_pu_cancel)
+    public void onCancel() {
+        sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
+    }
+
+    @Override
     public void onClickListener(Pickup pickup) {
         detailSheetBehavior.setState(BottomSheetBehavior.STATE_EXPANDED);
         presenter.setPickupDetail(pickup);
@@ -187,18 +200,5 @@ public class PickupActivity extends AppCompatActivity implements PickupActivityM
     @Override
     public String getPhone() {
         return this.phone.getText().toString();
-    }
-
-    @Override
-    @OnClick(R.id.btn_pu_save)
-    public void onSave() {
-        sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
-        presenter.save();
-    }
-
-    @Override
-    @OnClick(R.id.btn_pu_cancel)
-    public void onCancel() {
-        sheetBehavior.setState(BottomSheetBehavior.STATE_COLLAPSED);
     }
 }

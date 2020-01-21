@@ -14,19 +14,26 @@ import com.transoft.appspp.R;
 import com.transoft.appspp.adapter.SeatAdapter;
 import com.transoft.appspp.di.SppApplication;
 import com.transoft.appspp.model.Seat;
+import com.transoft.appspp.mvp.sales.SalesActivityMvp;
+import com.transoft.appspp.mvp.sales.SalesActivityPresenter;
+
+import java.util.List;
 
 import javax.inject.Inject;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class SalesActivity extends AppCompatActivity implements SeatAdapter.ClickListener {
+public class SalesActivity extends AppCompatActivity implements SeatAdapter.ClickListener, SalesActivityMvp.View {
 
     @BindView(R.id.recycler_view_seats)
     public RecyclerView recyclerView;
 
     @Inject
     public SeatAdapter seatAdapter;
+
+    @Inject
+    public SalesActivityMvp.Presenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,7 +61,34 @@ public class SalesActivity extends AppCompatActivity implements SeatAdapter.Clic
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        presenter.setView(this);
+        presenter.loadData();
+    }
+
+    @Override
     public void onClickListener(Seat seat) {
+
+    }
+
+    @Override
+    public void showSnackBar(String message) {
+
+    }
+
+    @Override
+    public void showData(List<Seat> seats) {
+        seatAdapter.setData(seats);
+    }
+
+    @Override
+    public void showProgress() {
+
+    }
+
+    @Override
+    public void hideProgress() {
 
     }
 }
