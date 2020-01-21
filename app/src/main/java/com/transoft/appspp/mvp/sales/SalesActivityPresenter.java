@@ -31,6 +31,7 @@ public class SalesActivityPresenter implements SalesActivityMvp.Presenter {
                 .subscribeWith(new DisposableObserver<List<Seat>>() {
                     @Override
                     public void onNext(List<Seat> seats) {
+                        System.out.println("SIZE.................... " + seats.size());
                         view.showData(seats);
                     }
 

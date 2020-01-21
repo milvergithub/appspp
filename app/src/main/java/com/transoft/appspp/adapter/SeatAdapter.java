@@ -63,9 +63,9 @@ public class SeatAdapter extends RecyclerView.Adapter<SeatAdapter.SeatHolder> {
         }
     }
 
-    public void setData(List<Seat> data) {
+    public void setData(List<Seat> seats) {
         this.data.clear();
-        this.data.addAll(data);
+        this.data.addAll(seats);
         notifyDataSetChanged();
     }
 

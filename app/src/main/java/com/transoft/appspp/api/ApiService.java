@@ -20,5 +20,5 @@ public interface ApiService {
     Observable<Pickup> savePickup(@Body Pickup pickup);
 
     @GET("seats")
-    Observable<List<Seat>> finAllSeats(@Query("pageSize") Integer size);
+    Observable<List<Seat>> finAllSeats(@Query("size") Integer size);
 }
