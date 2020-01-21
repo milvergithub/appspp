@@ -15,7 +15,7 @@
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
         <activity
-            android:name=".ui.SalesActivity"
+            android:name=".ui.sales.SalesActivity"
             android:theme="@style/Theme.AppCompat.DayNight.NoActionBar" />
         <activity
             android:name=".ui.pickup.PickupActivity"

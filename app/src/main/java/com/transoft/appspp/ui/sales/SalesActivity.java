@@ -1,4 +1,4 @@
-package com.transoft.appspp.ui;
+package com.transoft.appspp.ui.sales;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;

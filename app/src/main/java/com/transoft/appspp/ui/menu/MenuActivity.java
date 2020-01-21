@@ -9,7 +9,7 @@ import android.widget.Toast;
 import com.transoft.appspp.R;
 import com.transoft.appspp.di.SppApplication;
 import com.transoft.appspp.mvp.menu.MenuActivityMvp;
-import com.transoft.appspp.ui.SalesActivity;
+import com.transoft.appspp.ui.sales.SalesActivity;
 import com.transoft.appspp.ui.sppmenu.SppMenuActivity;
 import com.transoft.appspp.util.AndroidUtil;
 import javax.inject.Inject;
