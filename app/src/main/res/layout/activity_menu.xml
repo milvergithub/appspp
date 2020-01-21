@@ -21,10 +21,23 @@
             android:text="@string/qr_scan_button"
             android:textColor="@android:color/white" />
         <Button
-            android:id="@+id/btn_spp"
+            android:id="@+id/btn_sales"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"
             android:layout_below="@+id/btn_qr_scanner"
+            android:layout_marginTop="10dp"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:background="@drawable/btn_rounded"
+            android:text="@string/sales_button"
+            android:textColor="@android:color/white" />
+        <Button
+            android:id="@+id/btn_spp"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_below="@+id/btn_sales"
             android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="50dp"

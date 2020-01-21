@@ -2,6 +2,7 @@
     <string name="app_name">appspp</string>
 
     <string name="qr_scan_button">SCAN CODE QR</string>
+    <string name="sales_button">SALES</string>
     <string name="btn_spp">PUERTA PUERTA</string>
     <string name="title_activity_spp">SppActivity</string>
     <string name="title_reception">Recojos</string>

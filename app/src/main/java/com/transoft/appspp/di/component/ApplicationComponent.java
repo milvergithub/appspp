@@ -5,6 +5,7 @@ import com.transoft.appspp.di.module.AdapterModule;
 import com.transoft.appspp.di.module.ApplicationModule;
 import com.transoft.appspp.di.module.MvpModule;
 import com.transoft.appspp.di.module.RetrofitModule;
+import com.transoft.appspp.ui.SalesActivity;
 import com.transoft.appspp.ui.menu.MenuActivity;
 import com.transoft.appspp.ui.pickup.PickupActivity;
 import com.transoft.appspp.ui.sppmenu.SppMenuActivity;
@@ -21,4 +22,6 @@ public interface ApplicationComponent {
     void inject(SppMenuActivity sppMenuActivity);
 
     void inject(PickupActivity pickupActivity);
+
+    void inject(SalesActivity salesActivity);
 }

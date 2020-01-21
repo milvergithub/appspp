@@ -13,8 +13,20 @@
         android:layout_marginRight="20dp"
         android:layout_height="match_parent">
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:text="TEXT"/>
+            android:id="@+id/extra_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Name"
+            android:textSize="16sp"
+            android:textColor="@color/titleColor"/>
+
+        <TextView
+            android:id="@+id/extra_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="16sp"
+            android:layout_marginLeft="10dp"
+            android:layout_toRightOf="@+id/extra_name"
+            android:textColor="@color/subtitle"/>
     </RelativeLayout>
 </RelativeLayout>
