@@ -5,6 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
+import androidx.cardview.widget.CardView;
 import androidx.recyclerview.widget.RecyclerView;
 import com.transoft.appspp.R;
 import com.transoft.appspp.model.Pickup;
@@ -33,7 +34,7 @@ public class PickupAdapter extends RecyclerView.Adapter<PickupAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         final Pickup pickup = data.get(position);
-        holder.view.setOnClickListener(new View.OnClickListener() {
+        holder.cardView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 if (clickListener != null) {
@@ -55,6 +56,9 @@ public class PickupAdapter extends RecyclerView.Adapter<PickupAdapter.ViewHolder
     class ViewHolder extends RecyclerView.ViewHolder {
 
         View view;
+
+        @BindView(R.id.card_item)
+        public CardView cardView;
 
         @BindView(R.id.pick_up_name)
         public TextView pickUpName;
